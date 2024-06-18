@@ -1,5 +1,6 @@
 # TUGAS-PROJECT-DMML24
 
+**Nama Anggota**
 - Andi Alisha Faiqihah - H071221010
 - Mahendra Kirana M.B. - H071221058
 - Nurul Alya - H071221009
