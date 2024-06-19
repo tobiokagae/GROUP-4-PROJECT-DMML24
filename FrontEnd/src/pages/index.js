@@ -348,9 +348,11 @@ export default function Home() {
         </div>
       </form>
       {prediction && (
-        <div className="mt-6 bg-gray-700 p-4 rounded-md">
-          <h2 className="text-xl font-bold">Prediction Result:</h2>
-          <p className="text-lg">{prediction}</p>
+        <div className="mt-6 w-full max-w-4xl mx-auto bg-gray-700 p-6 rounded-md">
+          <h2 className="text-xl font-bold text-center mb-4">
+            Prediction Result:
+          </h2>
+          <p className="text-lg text-white text-center">{prediction}</p>
         </div>
       )}
     </div>
