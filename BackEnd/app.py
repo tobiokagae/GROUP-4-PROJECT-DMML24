@@ -7,9 +7,6 @@ import warnings
 app = Flask(__name__)
 CORS(app)
 
-# Abaikan peringatan
-warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
-
 # Load the trained model
 model = joblib.load('sleep_disorder_model.pkl')
 
