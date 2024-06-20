@@ -16,11 +16,11 @@ def predict():
     
     # Konversi gender menjadi numerik
     gender_mapping = {'Male': 0, 'Female': 1, 'Other': 2}
-    gender_numeric = gender_mapping[data['gender']]
+    gender_numeric = gender_mapping.get(data['gender'], 0)  # Default to Male (0) if gender not found
     
     # Konversi bmi_category menjadi numerik
     bmi_mapping = {'Underweight': 0, 'Normal': 1, 'Overweight': 2, 'Obese': 3}
-    bmi_numeric = bmi_mapping[data['bmi_category']]
+    bmi_numeric = bmi_mapping.get(data['bmi_category'], 1)  # Default to Normal (1) if BMI category not found
     
     features = {
         'Gender': gender_numeric,
@@ -39,6 +39,7 @@ def predict():
     # Buat DataFrame untuk memastikan nama fitur cocok
     features_df = pd.DataFrame([features])
     
+    # Prediksi menggunakan model
     prediction = model.predict(features_df)
     prediction_label = int(prediction[0])
 
@@ -51,9 +52,12 @@ def predict():
         prediction_text = "Sleep Apnea"
     else:
         prediction_text = "Unknown"
+    
+    # Cek kondisi tekanan darah rendah
+    if data.get('systolic') < 90 and data.get('diastolic') < 60:
+        prediction_text += " & Low Blood Pressure"
 
     return jsonify({'prediction': prediction_text})
 
 if __name__ == '__main__':
     app.run(debug=True)
-
