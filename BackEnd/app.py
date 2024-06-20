@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import pandas as pd
-import warnings
+# import warnings
 
 app = Flask(__name__)
 CORS(app)
@@ -54,10 +54,11 @@ def predict():
         prediction_text = "Unknown"
     
     # Cek kondisi tekanan darah rendah
+    low_blood_pressure = False
     if data.get('systolic') < 90 and data.get('diastolic') < 60:
-        prediction_text += " & Low Blood Pressure"
+        low_blood_pressure = True
 
-    return jsonify({'prediction': prediction_text})
+    return jsonify({'prediction': prediction_text, 'low_blood_pressure': low_blood_pressure})
 
 if __name__ == '__main__':
     app.run(debug=True)

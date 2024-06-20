@@ -14,6 +14,7 @@ export default function Home() {
   const [systolic, setSystolic] = useState(120);
   const [diastolic, setDiastolic] = useState(80);
   const [prediction, setPrediction] = useState("");
+  const [lowBloodPressure, setLowBloodPressure] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +48,7 @@ export default function Home() {
 
       const result = await response.json();
       setPrediction(result.prediction);
+      setLowBloodPressure(result.low_blood_pressure);
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -55,24 +57,23 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center">
       <Head>
-        <title>Sleep Disorder Detection App</title>
+        <title>Sleep Disorder Prediction</title>
       </Head>
       <header className="mt-10 mb-6 text-center">
-        <h1 className="text-4xl font-bold mb-2">
-          🌙 Sleep Disorder Detection App
+        <h1 className="text-4xl font-extrabold mb-2">
+          SLEEP DISORDER PREDICTION
         </h1>
-        <p>This app detects sleep disorders based on input features.</p>
+        <p>Detecting Sleep Disorders for a Better Life.</p>
       </header>
       <form
         onSubmit={handleSubmit}
         className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-4xl"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Input Details */}
+        
           <div>
-            <h2 className="text-2xl font-semibold mb-4">📋 Input Details</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">Input Yout Details</h2>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Age</label>
+              <label className="block text-lg font-medium mb-1">Age</label>
               <input
                 type="range"
                 name="age"
@@ -82,10 +83,10 @@ export default function Home() {
                 value={age}
                 onChange={(e) => setAge(Number(e.target.value))}
               />
-              <p className="mt-1 text-xs text-gray-400">Age: {age} years</p>
+              <p className="mt-1 text-gray-400">Age: {age} years</p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Gender</label>
+              <label className="block text-lg font-medium mb-1">Gender</label>
               <select
                 name="gender"
                 className="w-full px-3 py-2 rounded-md bg-gray-700 text-white"
@@ -96,10 +97,10 @@ export default function Home() {
                 <option>Male</option>
                 <option>Other</option>
               </select>
-              <p className="mt-1 text-xs text-gray-400">Gender: {gender}</p>
+              <p className="mt-1 text-gray-400">Gender: {gender}</p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 BMI Category
               </label>
               <select
@@ -113,17 +114,15 @@ export default function Home() {
                 <option>Overweight</option>
                 <option>Obese</option>
               </select>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 BMI Category: {bmiCategory}
               </p>
             </div>
           </div>
 
-          {/* Sleep Details */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4">💤 Sleep Details</h2>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Sleep Duration
               </label>
               <input
@@ -136,12 +135,12 @@ export default function Home() {
                 value={sleepDuration}
                 onChange={(e) => setSleepDuration(Number(e.target.value))}
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Sleep Duration: {sleepDuration} hours
               </p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Quality of Sleep
               </label>
               <input
@@ -153,12 +152,12 @@ export default function Home() {
                 value={qualityOfSleep}
                 onChange={(e) => setQualityOfSleep(Number(e.target.value))}
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Quality of Sleep: {qualityOfSleep}
               </p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Physical Activity Level
               </label>
               <input
@@ -172,10 +171,10 @@ export default function Home() {
                   setPhysicalActivityLevel(Number(e.target.value))
                 }
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Physical Activity Level: {physicalActivityLevel}
               </p>
-              <ul className="text-xs text-gray-400 list-disc pl-4">
+              <ul className="text-gray-400 list-disc pl-4">
                 <li>0-33: Low (Little or no physical activity)</li>
                 <li>
                   34-66: Moderate (Some physical activity such as walking, light
@@ -188,12 +187,9 @@ export default function Home() {
               </ul>
             </div>
           </div>
-
-          {/* Health Details */}
           <div>
-            <h2 className="text-2xl font-semibold mb-4">❤️ Health Details</h2>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Stress Level
               </label>
               <input
@@ -205,10 +201,10 @@ export default function Home() {
                 value={stressLevel}
                 onChange={(e) => setStressLevel(Number(e.target.value))}
               />
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Stress Level: {stressLevel}
               </p>
-              <ul className="text-xs text-gray-400 list-disc pl-4">
+              <ul className="text-gray-400 list-disc pl-4">
                 <li>0: No stress</li>
                 <li>1-3: Low stress</li>
                 <li>4-6: Moderate stress</li>
@@ -217,7 +213,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Heart Rate
               </label>
               <div className="flex items-center">
@@ -242,12 +238,12 @@ export default function Home() {
                   +
                 </button>
               </div>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Heart Rate: {heartRate} bpm
               </p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Daily Steps
               </label>
               <div className="flex items-center">
@@ -274,12 +270,12 @@ export default function Home() {
                   +
                 </button>
               </div>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Daily Steps: {dailySteps} steps
               </p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">Systolic</label>
+              <label className="block text-lg font-medium mb-1">Systolic</label>
               <div className="flex items-center">
                 <button
                   type="button"
@@ -302,12 +298,12 @@ export default function Home() {
                   +
                 </button>
               </div>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Systolic: {systolic} mmHg
               </p>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-lg font-medium mb-1">
                 Diastolic
               </label>
               <div className="flex items-center">
@@ -332,12 +328,12 @@ export default function Home() {
                   +
                 </button>
               </div>
-              <p className="mt-1 text-xs text-gray-400">
+              <p className="mt-1 text-gray-400">
                 Diastolic: {diastolic} mmHg
               </p>
             </div>
           </div>
-        </div>
+        
         <div className="mt-6 text-center">
           <button
             type="submit"
@@ -347,14 +343,20 @@ export default function Home() {
           </button>
         </div>
       </form>
-      {prediction && (
-        <div className="mt-6 w-full max-w-4xl mx-auto bg-gray-700 p-6 rounded-md">
-          <h2 className="text-xl font-bold text-center mb-4">
-            Prediction Result:
-          </h2>
-          <p className="text-lg text-white text-center">{prediction}</p>
-        </div>
-      )}
+      <div className="w-full max-w-4xl mx-auto p-6 rounded-md mt-4 mb-4">
+        {prediction && (
+          <div>
+            <h2 className="text-xl text-center mb-4">Prediction Result:</h2>
+            <p className="text-4xl font-bold text-white text-center mt-4 mb-4">{prediction}</p>
+          </div>
+        )}
+        
+        {lowBloodPressure && (
+            <div className="mx-auto w-64 bg-orange-200 text-center px-2 rounded-md mb-2">
+              <p className="mt-2 text-orange-950 text-base">⚠️ Low Blood Pressure Detected</p>
+            </div>
+        )}
+      </div>
     </div>
   );
 }
