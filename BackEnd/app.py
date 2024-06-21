@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the trained model
-model = joblib.load('sleep_disorder_model.pkl')
+model = joblib.load('models/sleep_disorder_model.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
