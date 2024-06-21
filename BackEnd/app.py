@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import pandas as pd
-# import warnings
 
 app = Flask(__name__)
 CORS(app)
@@ -15,11 +14,11 @@ def predict():
     data = request.json
     
     # Konversi gender menjadi numerik
-    gender_mapping = {'Male': 0, 'Female': 1, 'Other': 2}
+    gender_mapping = {'Male': 1, 'Female': 0}
     gender_numeric = gender_mapping.get(data['gender'], 0)  # Default to Male (0) if gender not found
     
     # Konversi bmi_category menjadi numerik
-    bmi_mapping = {'Underweight': 0, 'Normal': 1, 'Overweight': 2, 'Obese': 3}
+    bmi_mapping = {'Normal': 0, 'Overweight': 2, 'Obese':1}
     bmi_numeric = bmi_mapping.get(data['bmi_category'], 1)  # Default to Normal (1) if BMI category not found
     
     
