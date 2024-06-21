@@ -22,6 +22,7 @@ def predict():
     bmi_mapping = {'Underweight': 0, 'Normal': 1, 'Overweight': 2, 'Obese': 3}
     bmi_numeric = bmi_mapping.get(data['bmi_category'], 1)  # Default to Normal (1) if BMI category not found
     
+    
     features = {
         'Gender': gender_numeric,
         'Age': data['age'],
