@@ -95,7 +95,6 @@ export default function Home() {
               >
                 <option>Female</option>
                 <option>Male</option>
-                <option>Other</option>
               </select>
               <p className="mt-1 text-gray-400">Gender: {gender}</p>
             </div>
