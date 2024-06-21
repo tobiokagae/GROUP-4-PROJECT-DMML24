@@ -55,7 +55,7 @@ def predict():
     
     # Cek kondisi tekanan darah rendah
     low_blood_pressure = False
-    if data.get('systolic') < 90 and data.get('diastolic') < 60:
+    if data.get('systolic') < 90 and data.get('diastolic') <= 60:
         low_blood_pressure = True
 
     return jsonify({'prediction': prediction_text, 'low_blood_pressure': low_blood_pressure})
