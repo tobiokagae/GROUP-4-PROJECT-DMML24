@@ -2,6 +2,11 @@ import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
+  const initialHeartRate = 60;
+  const initialDailySteps = 7000;
+  const initialSystolic = 80;
+  const initialDiastolic = 50;
+
   const [age, setAge] = useState(25);
   const [gender, setGender] = useState("Female");
   const [bmiCategory, setBmiCategory] = useState("Normal");
@@ -9,10 +14,10 @@ export default function Home() {
   const [qualityOfSleep, setQualityOfSleep] = useState(5);
   const [physicalActivityLevel, setPhysicalActivityLevel] = useState(50);
   const [stressLevel, setStressLevel] = useState(5);
-  const [heartRate, setHeartRate] = useState(70);
-  const [dailySteps, setDailySteps] = useState(5000);
-  const [systolic, setSystolic] = useState(120);
-  const [diastolic, setDiastolic] = useState(80);
+  const [heartRate, setHeartRate] = useState(initialHeartRate);
+  const [dailySteps, setDailySteps] = useState(initialDailySteps);
+  const [systolic, setSystolic] = useState(initialSystolic);
+  const [diastolic, setDiastolic] = useState(initialDiastolic);
   const [prediction, setPrediction] = useState("");
   const [lowBloodPressure, setLowBloodPressure] = useState(false);
 
@@ -54,24 +59,31 @@ export default function Home() {
     }
   };
 
+  const handleInputChange = (setter, min, max) => (e) => {
+    const value = Number(e.target.value);
+    if (value >= min && value <= max) {
+      setter(value);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center">
+    <>
       <Head>
         <title>Sleep Disorder Prediction</title>
       </Head>
-      <header className="mt-10 mb-6 text-center">
-        <h1 className="text-4xl font-extrabold mb-2">
-          SLEEP DISORDER PREDICTION
-        </h1>
-        <p>Detecting Sleep Disorders for a Better Life.</p>
-      </header>
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-4xl"
-      >
-        
+      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center" style={{ backgroundImage: `url('/foto1.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <header className="mt-10 mb-6 text-center">
+          <h1 className="text-4xl font-extrabold mb-2">
+            SLEEP DISORDER PREDICTION
+          </h1>
+          <p>Detecting Sleep Disorders for a Better Life.</p>
+        </header>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-blue-900 p-6 rounded-lg shadow-md w-full max-w-4xl m-8 text-white"
+        >
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-center">Input Yout Details</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">Input Your Details</h2>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">Age</label>
               <input
@@ -83,7 +95,7 @@ export default function Home() {
                 value={age}
                 onChange={(e) => setAge(Number(e.target.value))}
               />
-              <p className="mt-1 text-gray-400">Age: {age} years</p>
+              <p className="block text-lg font-medium mb-1">Age: {age} years</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">Gender</label>
@@ -96,7 +108,7 @@ export default function Home() {
                 <option>Female</option>
                 <option>Male</option>
               </select>
-              <p className="mt-1 text-gray-400">Gender: {gender}</p>
+              <p className="block text-lg font-medium mb-1">Gender: {gender}</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">
@@ -109,13 +121,17 @@ export default function Home() {
                 onChange={(e) => setBmiCategory(e.target.value)}
               >
                 <option>Normal</option>
-                <option>Underweight</option>
                 <option>Overweight</option>
                 <option>Obese</option>
               </select>
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 BMI Category: {bmiCategory}
               </p>
+              <ul className="block text-lg font-medium mb-1">
+                <li>Normal BMI ranges from 18.5 to 24.9.</li>
+                <li>Overweight BMI ranges from 25 to 29.9.</li>
+                <li>Obese BMI is 30 or higher.</li>
+              </ul>
             </div>
           </div>
 
@@ -134,7 +150,7 @@ export default function Home() {
                 value={sleepDuration}
                 onChange={(e) => setSleepDuration(Number(e.target.value))}
               />
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 Sleep Duration: {sleepDuration} hours
               </p>
             </div>
@@ -151,7 +167,7 @@ export default function Home() {
                 value={qualityOfSleep}
                 onChange={(e) => setQualityOfSleep(Number(e.target.value))}
               />
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 Quality of Sleep: {qualityOfSleep}
               </p>
             </div>
@@ -170,10 +186,10 @@ export default function Home() {
                   setPhysicalActivityLevel(Number(e.target.value))
                 }
               />
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 Physical Activity Level: {physicalActivityLevel}
               </p>
-              <ul className="text-gray-400 list-disc pl-4">
+              <ul className="block text-lg font-medium mb-1">
                 <li>0-33: Low (Little or no physical activity)</li>
                 <li>
                   34-66: Moderate (Some physical activity such as walking, light
@@ -200,10 +216,10 @@ export default function Home() {
                 value={stressLevel}
                 onChange={(e) => setStressLevel(Number(e.target.value))}
               />
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 Stress Level: {stressLevel}
               </p>
-              <ul className="text-gray-400 list-disc pl-4">
+              <ul className="block text-lg font-medium mb-1">
                 <li>0: No stress</li>
                 <li>1-3: Low stress</li>
                 <li>4-6: Moderate stress</li>
@@ -218,28 +234,26 @@ export default function Home() {
               <div className="flex items-center">
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white"
-                  onClick={() => setHeartRate((prev) => Math.max(0, prev - 1))}
+                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
+                  onClick={() => setHeartRate((prev) => Math.max(60, prev - 1))}
                 >
                   -
                 </button>
                 <input
                   name="heart_rate"
                   value={heartRate}
-                  onChange={(e) => setHeartRate(Number(e.target.value))}
+                  onChange={handleInputChange(setHeartRate, 60, 162)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white"
-                  onClick={() => setHeartRate((prev) => prev + 1)}
+                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
+                  onClick={() => setHeartRate((prev) => Math.min(162, prev + 1))}
                 >
                   +
                 </button>
               </div>
-              <p className="mt-1 text-gray-400">
-                Heart Rate: {heartRate} bpm
-              </p>
+              <p className="block text-lg font-medium mb-1">Heart Rate: {heartRate} bpm</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">
@@ -248,28 +262,26 @@ export default function Home() {
               <div className="flex items-center">
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white"
-                  onClick={() =>
-                    setDailySteps((prev) => Math.max(0, prev - 100))
-                  }
+                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
+                  onClick={() => setDailySteps((prev) => Math.max(7000, prev - 100))}
                 >
                   -
                 </button>
                 <input
                   name="daily_steps"
                   value={dailySteps}
-                  onChange={(e) => setDailySteps(Number(e.target.value))}
+                  onChange={handleInputChange(setDailySteps, 7000, 10000)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white"
-                  onClick={() => setDailySteps((prev) => prev + 100)}
+                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
+                  onClick={() => setDailySteps((prev) => Math.min(10000, prev + 100))}
                 >
                   +
                 </button>
               </div>
-              <p className="mt-1 text-gray-400">
+              <p className="block text-lg font-medium mb-1">
                 Daily Steps: {dailySteps} steps
               </p>
             </div>
@@ -278,28 +290,26 @@ export default function Home() {
               <div className="flex items-center">
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white"
-                  onClick={() => setSystolic((prev) => Math.max(0, prev - 1))}
+                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
+                  onClick={() => setSystolic((prev) => Math.max(80, prev - 1))}
                 >
                   -
                 </button>
                 <input
                   name="systolic"
                   value={systolic}
-                  onChange={(e) => setSystolic(Number(e.target.value))}
+                  onChange={handleInputChange(setSystolic, 90, 140)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white"
-                  onClick={() => setSystolic((prev) => prev + 1)}
+                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
+                  onClick={() => setSystolic((prev) => Math.min(140, prev + 1))}
                 >
                   +
                 </button>
               </div>
-              <p className="mt-1 text-gray-400">
-                Systolic: {systolic} mmHg
-              </p>
+              <p className="block text-lg font-medium mb-1">Systolic: {systolic} mmHg</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">
@@ -308,54 +318,56 @@ export default function Home() {
               <div className="flex items-center">
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white"
-                  onClick={() => setDiastolic((prev) => Math.max(0, prev - 1))}
+                  className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
+                  onClick={() => setDiastolic((prev) => Math.max(50, prev - 1))}
                 >
                   -
                 </button>
                 <input
                   name="diastolic"
                   value={diastolic}
-                  onChange={(e) => setDiastolic(Number(e.target.value))}
+                  onChange={handleInputChange(setDiastolic, 60, 90)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
-                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white"
-                  onClick={() => setDiastolic((prev) => prev + 1)}
+                  className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
+                  onClick={() => setDiastolic((prev) => Math.min(90, prev + 1))}
                 >
                   +
                 </button>
               </div>
-              <p className="mt-1 text-gray-400">
-                Diastolic: {diastolic} mmHg
+              <p className="block text-lg font-medium mb-1">Diastolic: {diastolic} mmHg</p>
+            </div>
+          </div>
+          <div className="mt-6 text-center">
+            <button
+              type="submit"
+              className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            >
+              Predict
+            </button>
+          </div>
+          <div className="w-full max-w-4xl mx-auto p-6 rounded-md mt-4 mb-4">
+          {prediction && (
+            <div>
+              <h2 className="text-xl text-center mb-4">Prediction Result:</h2>
+              <p className="text-4xl font-bold text-white text-center mt-4 mb-4">
+                {prediction}
               </p>
             </div>
-          </div>
-        
-        <div className="mt-6 text-center">
-          <button
-            type="submit"
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Predict
-          </button>
-        </div>
-      </form>
-      <div className="w-full max-w-4xl mx-auto p-6 rounded-md mt-4 mb-4">
-        {prediction && (
-          <div>
-            <h2 className="text-xl text-center mb-4">Prediction Result:</h2>
-            <p className="text-4xl font-bold text-white text-center mt-4 mb-4">{prediction}</p>
-          </div>
-        )}
-        
-        {lowBloodPressure && (
+          )}
+
+          {lowBloodPressure && (
             <div className="mx-auto w-64 bg-orange-200 text-center px-2 rounded-md mb-2">
-              <p className="mt-2 text-orange-950 text-base">⚠️ Low Blood Pressure Detected</p>
+              <p className="mt-2 text-orange-950 text-base">
+                ⚠️ Low Blood Pressure Detected
+              </p>
             </div>
-        )}
+          )}
+        </div>
+        </form>
       </div>
-    </div>
+    </>
   );
 }
