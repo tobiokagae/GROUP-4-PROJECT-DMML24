@@ -60,5 +60,16 @@ def predict():
 
     return jsonify({'prediction': prediction_text, 'low_blood_pressure': low_blood_pressure})
 
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    data = request.get_json(force=True)
+    feedback_message = data.get('feedback')
+    
+    # Save feedback to a file (feedback.txt)
+    with open('feedback.txt', 'a') as f:
+        f.write(feedback_message + '\n')
+    
+    return jsonify({'message': 'Feedback received'})
+
 if __name__ == '__main__':
     app.run(debug=True)

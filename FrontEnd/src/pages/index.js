@@ -20,6 +20,9 @@ export default function Home() {
   const [diastolic, setDiastolic] = useState(initialDiastolic);
   const [prediction, setPrediction] = useState("");
   const [lowBloodPressure, setLowBloodPressure] = useState(false);
+  const [feedback, setFeedback] = useState('');
+  const [feedbackSuccess, setFeedbackSuccess] = useState(false);
+  const [feedbackResponse, setFeedbackResponse] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,6 +66,32 @@ export default function Home() {
     const value = Number(e.target.value);
     if (value >= min && value <= max) {
       setter(value);
+    }
+  };
+
+  const handleFeedback = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/feedback', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ feedback }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      setFeedbackResponse(result.message);
+      setFeedbackSuccess(true);
+      setFeedback('');
+      setTimeout(() => setFeedbackSuccess(false), 3000);
+    } catch (error) {
+      console.error("There was an error sending the feedback:", error);
+      setFeedbackResponse('Failed to send feedback');
+      setFeedbackSuccess(false);
     }
   };
 
@@ -298,13 +327,13 @@ export default function Home() {
                 <input
                   name="systolic"
                   value={systolic}
-                  onChange={handleInputChange(setSystolic, 90, 140)}
+                  onChange={handleInputChange(setSystolic, 90, 200)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
-                  onClick={() => setSystolic((prev) => Math.min(140, prev + 1))}
+                  onClick={() => setSystolic((prev) => Math.min(200, prev + 1))}
                 >
                   +
                 </button>
@@ -326,13 +355,13 @@ export default function Home() {
                 <input
                   name="diastolic"
                   value={diastolic}
-                  onChange={handleInputChange(setDiastolic, 60, 90)}
+                  onChange={handleInputChange(setDiastolic, 50, 100)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
-                  onClick={() => setDiastolic((prev) => Math.min(90, prev + 1))}
+                  onClick={() => setDiastolic((prev) => Math.min(100, prev + 1))}
                 >
                   +
                 </button>
@@ -349,24 +378,46 @@ export default function Home() {
             </button>
           </div>
           <div className="w-full max-w-4xl mx-auto p-6 rounded-md mt-4 mb-4">
-          {prediction && (
-            <div>
-              <h2 className="text-xl text-center mb-4">Prediction Result:</h2>
-              <p className="text-4xl font-bold text-white text-center mt-4 mb-4">
-                {prediction}
-              </p>
-            </div>
-          )}
+            {prediction && (
+              <div>
+                <h2 className="text-xl text-center mb-4">Prediction Result:</h2>
+                <p className="text-4xl font-bold text-white text-center mt-4 mb-4">
+                  {prediction}
+                </p>
+              </div>
+            )}
 
-          {lowBloodPressure && (
-            <div className="mx-auto w-64 bg-orange-200 text-center px-2 rounded-md mb-2">
-              <p className="mt-2 text-orange-950 text-base">
-                ⚠️ Low Blood Pressure Detected
-              </p>
+            {lowBloodPressure && (
+              <div className="mx-auto w-64 bg-orange-200 text-center px-2 rounded-md mb-2">
+                <p className="mt-2 text-orange-950 text-base">
+                  ⚠️ Low Blood Pressure Detected
+                </p>
+              </div>
+            )}
+          </div>
+        </form>
+        <div className="w-full max-w-4xl mx-auto p-6 m-10 bg-blue-900 rounded-lg shadow-md text-white mt-4">
+          <h2 className="text-2xl font-semibold mb-4 text-center">Feedback</h2>
+          <textarea
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            className="w-full px-3 py-2 mb-4 bg-gray-700 rounded-md text-white"
+            rows="4"
+            placeholder="Write your feedback here..."
+          />
+          <button
+            onClick={handleFeedback}
+            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            disabled={!feedback.trim()}
+          >
+            Submit Feedback
+          </button>
+          {feedbackResponse && feedbackSuccess && (
+            <div className="mt-4 text-center px-4 py-2 rounded-md bg-green-200 text-green-900">
+              {feedbackResponse}
             </div>
           )}
         </div>
-        </form>
       </div>
     </>
   );
