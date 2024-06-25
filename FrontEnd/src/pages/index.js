@@ -2,8 +2,8 @@ import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
-  const initialHeartRate = 60;
-  const initialDailySteps = 500;
+  const initialHeartRate = 80;
+  const initialDailySteps = 0;
   const initialSystolic = 80;
   const initialDiastolic = 50;
 
@@ -273,21 +273,21 @@ export default function Home() {
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
-                  onClick={() => setHeartRate((prev) => Math.max(60, prev - 1))}
+                  onClick={() => setHeartRate((prev) => Math.max(80, prev - 1))}
                 >
                   -
                 </button>
                 <input
                   name="heart_rate"
                   value={heartRate}
-                  onChange={handleInputChange(setHeartRate, 60, 162)}
+                  onChange={handleInputChange(setHeartRate, 80, 130)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
                   onClick={() =>
-                    setHeartRate((prev) => Math.min(162, prev + 1))
+                    setHeartRate((prev) => Math.min(130, prev + 1))
                   }
                 >
                   +
@@ -305,23 +305,21 @@ export default function Home() {
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-l-md text-white hover:bg-red-500"
-                  onClick={() =>
-                    setDailySteps((prev) => Math.max(500, prev - 100))
-                  }
+                  onClick={() => setDailySteps((prev) => Math.max(0, prev - 1))}
                 >
                   -
                 </button>
                 <input
                   name="daily_steps"
                   value={dailySteps}
-                  onChange={handleInputChange(setDailySteps, 500, 10000)}
+                  onChange={handleInputChange(setDailySteps, 0, 10000)}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
                   onClick={() =>
-                    setDailySteps((prev) => Math.min(10000, prev + 100))
+                    setDailySteps((prev) => Math.min(10000, prev + 1))
                   }
                 >
                   +
