@@ -20,9 +20,9 @@ export default function Home() {
   const [diastolic, setDiastolic] = useState(initialDiastolic);
   const [prediction, setPrediction] = useState("");
   const [lowBloodPressure, setLowBloodPressure] = useState(false);
-  const [feedback, setFeedback] = useState("");
+  const [feedback, setFeedback] = useState('');
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
-  const [feedbackResponse, setFeedbackResponse] = useState("");
+  const [feedbackResponse, setFeedbackResponse] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ export default function Home() {
 
   const handleFeedback = async () => {
     try {
-      const response = await fetch("http://localhost:5000/feedback", {
+      const response = await fetch('http://localhost:5000/feedback', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,11 +86,11 @@ export default function Home() {
       const result = await response.json();
       setFeedbackResponse(result.message);
       setFeedbackSuccess(true);
-      setFeedback("");
+      setFeedback('');
       setTimeout(() => setFeedbackSuccess(false), 3000);
     } catch (error) {
       console.error("There was an error sending the feedback:", error);
-      setFeedbackResponse("Failed to send feedback");
+      setFeedbackResponse('Failed to send feedback');
       setFeedbackSuccess(false);
     }
   };
@@ -100,14 +100,7 @@ export default function Home() {
       <Head>
         <title>Sleep Disorder Prediction</title>
       </Head>
-      <div
-        className="min-h-screen bg-gray-900 text-white flex flex-col items-center"
-        style={{
-          backgroundImage: `url('/foto1.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center" style={{ backgroundImage: `url('/foto1.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <header className="mt-10 mb-6 text-center">
           <h1 className="text-4xl font-extrabold mb-2">
             SLEEP DISORDER PREDICTION
@@ -119,9 +112,7 @@ export default function Home() {
           className="bg-blue-900 p-6 rounded-lg shadow-md w-full max-w-4xl m-8 text-white"
         >
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-center">
-              Input Your Details
-            </h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">Input Your Details</h2>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">Age</label>
               <input
@@ -280,22 +271,19 @@ export default function Home() {
                 <input
                   name="heart_rate"
                   value={heartRate}
-                  onChange={handleInputChange(setHeartRate, 80, 130)}
+                  onChange={(e) => setHeartRate(Number(e.target.value))}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
-                  onClick={() =>
-                    setHeartRate((prev) => Math.min(130, prev + 1))
-                  }
+                  onClick={() => setHeartRate((prev) => Math.min(130, prev + 1))}
                 >
                   +
                 </button>
               </div>
-              <p className="block text-lg font-medium mb-1">
-                Heart Rate: {heartRate} bpm
-              </p>
+              <p className="block text-lg font-medium mb-1">Heart Rate: Input Range 80-130</p>
+              <p className="block text-lg font-medium mb-1">Heart Rate: {heartRate} bpm</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">
@@ -312,19 +300,18 @@ export default function Home() {
                 <input
                   name="daily_steps"
                   value={dailySteps}
-                  onChange={handleInputChange(setDailySteps, 0, 10000)}
+                  onChange={(e) => setDailySteps(Number(e.target.value))}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
-                  onClick={() =>
-                    setDailySteps((prev) => Math.min(10000, prev + 1))
-                  }
+                  onClick={() => setDailySteps((prev) => Math.min(10000, prev + 1))}
                 >
                   +
                 </button>
               </div>
+              <p className="block text-lg font-medium mb-1">Daily Steps: Input Range 0-10000</p>
               <p className="block text-lg font-medium mb-1">
                 Daily Steps: {dailySteps} steps
               </p>
@@ -342,7 +329,7 @@ export default function Home() {
                 <input
                   name="systolic"
                   value={systolic}
-                  onChange={handleInputChange(setSystolic, 90, 200)}
+                  onChange={(e) => setSystolic(Number(e.target.value))}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
@@ -353,9 +340,8 @@ export default function Home() {
                   +
                 </button>
               </div>
-              <p className="block text-lg font-medium mb-1">
-                Systolic: {systolic} mmHg
-              </p>
+              <p className="block text-lg font-medium mb-1">Systolic: Input Range 80-200</p>
+              <p className="block text-lg font-medium mb-1">Systolic: {systolic} mmHg</p>
             </div>
             <div className="mb-4">
               <label className="block text-lg font-medium mb-1">
@@ -372,22 +358,19 @@ export default function Home() {
                 <input
                   name="diastolic"
                   value={diastolic}
-                  onChange={handleInputChange(setDiastolic, 50, 100)}
+                  onChange={(e) => setDiastolic(Number(e.target.value))}
                   className="w-full px-3 py-2 text-center bg-gray-700 text-white"
                 />
                 <button
                   type="button"
                   className="px-3 py-2 bg-gray-700 rounded-r-md text-white hover:bg-blue-500"
-                  onClick={() =>
-                    setDiastolic((prev) => Math.min(100, prev + 1))
-                  }
+                  onClick={() => setDiastolic((prev) => Math.min(100, prev + 1))}
                 >
                   +
                 </button>
               </div>
-              <p className="block text-lg font-medium mb-1">
-                Diastolic: {diastolic} mmHg
-              </p>
+              <p className="block text-lg font-medium mb-1">Diastolic: Input Range 50-100</p>
+              <p className="block text-lg font-medium mb-1">Diastolic: {diastolic} mmHg</p>
             </div>
           </div>
           <div className="mt-6 text-center">
