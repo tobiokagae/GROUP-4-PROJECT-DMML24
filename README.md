@@ -22,9 +22,18 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 ## **Report 1**
 ### **1. Kanban Board**
  ![Salinan dari Kanban Board Group 4](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/3e1aafbf-5a57-402b-82c4-4ca94fa4887e)
- **2. Catatan dari Kakak**
+ 
+### **2. Catatan**
  - Pisahkan kode-kode dalam 1 cell menjadi beberapa bagian cell (bagian pengolahan data)
  - Berikan penjelasan dari dilakukannya proses tersebut (bagian pengolahan data)
 
-## **2. **
+## **Report 2**
+### **1. Kanban Board**
+ ![Salinan dari Kanban Board Group 4 (1)](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/382a06bd-d2ba-4abe-b222-404b62c512c4)
 
+### **2. Catatan**
+ - Pelajari baik-baik modelnya, kemudian uji model-model yang memungkinkan untuk digunakan
+ - Pelajari baik-baik tentang apa itu accuracy, precission, recall, dan F1-score
+
+## **Report 3**
+### **1. Kanban Board**
