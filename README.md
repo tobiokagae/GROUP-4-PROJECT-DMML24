@@ -1,4 +1,4 @@
-# TUGAS-PROJECT-DMML24
+# **TUGAS-PROJECT-DMML24**
 
 ## **Nama Anggota**
 - Andi Alisha Faiqihah - H071221010
@@ -7,7 +7,7 @@
 - Rezqia Nurqalbi - H071221025
 
 ## **Nama aplikasi web**
-Sleep Disorder Prediction
+**Sleep Disorder Prediction**
 
 ## **Link Dataset**
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
