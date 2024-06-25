@@ -7,20 +7,30 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the trained model
-model = joblib.load('models/sleep_disorder_model.pkl')
+model_info = joblib.load('models/sleep_disorder_model.pkl')
+model = model_info['model']
+scaler = model_info['scaler']
+feature_names = model_info['feature_names']
 
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
     
-    # Konversi gender menjadi numerik
+    # Ensure all required keys are present in the input data
+    required_keys = ['gender', 'age', 'sleep_duration', 'quality_of_sleep', 'physical_activity_level',
+                     'stress_level', 'bmi_category', 'heart_rate', 'daily_steps', 'systolic', 'diastolic']
+    
+    for key in required_keys:
+        if key not in data:
+            return jsonify({'error': f'Missing required key: {key}'}), 400
+
+    # Convert gender to numeric
     gender_mapping = {'Male': 1, 'Female': 0}
-    gender_numeric = gender_mapping.get(data['gender'], 0)  # Default to Male (0) if gender not found
+    gender_numeric = gender_mapping.get(data['gender'], 0)  # Default to Female (0) if gender not found
     
-    # Konversi bmi_category menjadi numerik
-    bmi_mapping = {'Normal': 0, 'Overweight': 2, 'Obese':1}
-    bmi_numeric = bmi_mapping.get(data['bmi_category'], 1)  # Default to Normal (1) if BMI category not found
-    
+    # Convert BMI category to numeric
+    bmi_mapping = {'Normal': 0, 'Overweight': 2, 'Obese': 1}
+    bmi_numeric = bmi_mapping.get(data['bmi_category'], 0)  # Default to Normal (0) if BMI category not found
     
     features = {
         'Gender': gender_numeric,
@@ -36,27 +46,22 @@ def predict():
         'Diastolic': data['diastolic']
     }
 
-    # Buat DataFrame untuk memastikan nama fitur cocok
-    features_df = pd.DataFrame([features])
+    # Create DataFrame to ensure feature names match
+    features_df = pd.DataFrame([features], columns=feature_names)
     
-    # Prediksi menggunakan model
-    prediction = model.predict(features_df)
+    # Scale the features
+    features_scaled = scaler.transform(features_df)
+    
+    # Predict using the model
+    prediction = model.predict(features_scaled)
     prediction_label = int(prediction[0])
 
-    # Mapping nilai prediksi ke label yang lebih deskriptif
-    if prediction_label == 0:
-        prediction_text = "Healthy Sleep"
-    elif prediction_label == 1:
-        prediction_text = "Insomnia"
-    elif prediction_label == -1:
-        prediction_text = "Sleep Apnea"
-    else:
-        prediction_text = "Unknown"
+    # Map prediction value to descriptive label
+    prediction_mapping = {0: "Healthy Sleep", 1: "Insomnia", 2: "Sleep Apnea"}
+    prediction_text = prediction_mapping.get(prediction_label, "Unknown")
     
-    # Cek kondisi tekanan darah rendah
-    low_blood_pressure = False
-    if data.get('systolic') < 90 and data.get('diastolic') <= 60:
-        low_blood_pressure = True
+    # Check for low blood pressure condition
+    low_blood_pressure = data['systolic'] < 90 and data['diastolic'] <= 60
 
     return jsonify({'prediction': prediction_text, 'low_blood_pressure': low_blood_pressure})
 
@@ -65,7 +70,7 @@ def feedback():
     data = request.get_json(force=True)
     feedback_message = data.get('feedback')
     
-    # Save feedback to a file (feedback.txt)
+    # Save feedback to file (feedback.txt)
     with open('feedback.txt', 'a') as f:
         f.write(feedback_message + '\n')
     
