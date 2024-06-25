@@ -37,3 +37,4 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 
 ## **Report 3**
 ### **1. Kanban Board**
+### **2. Catatan**
