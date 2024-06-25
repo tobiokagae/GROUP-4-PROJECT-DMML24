@@ -22,7 +22,7 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 
 ## **Report 1**
 ### **1. Kanban Board**
- ![Salinan dari Kanban Board Group 4](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/3e1aafbf-5a57-402b-82c4-4ca94fa4887e)
+ ![Report 1](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/3e1aafbf-5a57-402b-82c4-4ca94fa4887e)
  
 ### **2. Catatan**
  - Pisahkan kode-kode dalam 1 cell menjadi beberapa bagian cell (bagian pengolahan data)
@@ -30,7 +30,7 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 
 ## **Report 2**
 ### **1. Kanban Board**
- ![Salinan dari Kanban Board Group 4 (1)](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/382a06bd-d2ba-4abe-b222-404b62c512c4)
+ ![Report 2](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/382a06bd-d2ba-4abe-b222-404b62c512c4)
 
 ### **2. Catatan**
  - Pelajari baik-baik modelnya, kemudian uji model-model yang memungkinkan untuk digunakan
@@ -38,4 +38,6 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 
 ## **Report 3**
 ### **1. Kanban Board**
+ ![Report 3](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/e4cd244d-1c54-4e70-a2cf-40295a0693ec)
+
 ### **2. Catatan**
