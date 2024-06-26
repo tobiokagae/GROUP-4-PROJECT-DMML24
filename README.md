@@ -18,6 +18,13 @@
 3. npm install
 4. npm run dev
 
+## Cara Menjalankan BE
+1. cd Backend
+2. install beberapa modul
+   run -> pip install pandas joblib scikit-learn
+3. run server
+   run -> python app.py
+
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
 
 ## **Report 1**
