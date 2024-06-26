@@ -45,6 +45,6 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
 
 ## **Report 3**
 ### **1. Kanban Board**
- ![Report 3](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/113653966/6f03bc12-badc-4053-94ba-7d2b586937ef)
+ ![Report 3](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/113653966/3117cd8c-7d01-47bc-a956-a3c8ab7ca97d)
 
 ### **2. Catatan**
