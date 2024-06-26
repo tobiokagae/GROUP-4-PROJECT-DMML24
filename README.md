@@ -15,12 +15,32 @@ Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengg
    - **Pandas** : Digunakan untuk memproses data dalam bentuk DataFrame
    - **Flask-CORS** : Mengizinkan Cross-Origin Resource Sharing (CORS)
 
-### Alur Kerja Aplikasi
+## Alur Kerja Aplikasi
 1. **Pengumpulan Data** : Pengguna mengisi formulir di frontend Next.js dengan data pribadi dan kesehatan mereka seperti usia, durasi tidur, kualitas tidur, tingkat aktivitas fisik, tingkat stres, kategori BMI, detak jantung, jumlah langkah harian, dan tekanan darah (sistolik dan diastolik).
 2. **Preprocessing Data** : Data yang dikumpulkan dari pengguna dikonversi ke dalam bentuk numerik yang sesuai dengan format yang digunakan saat pelatihan model. Misalnya, gender dikonversi menjadi nilai 0 atau 1, dan kategori BMI juga dikonversi menjadi nilai numerik.
 3. **Prediksi** : Data yang telah diproses kemudian diberikan ke model machine learning di backend Flask untuk memprediksi jenis gangguan tidur yang mungkin dialami oleh pengguna. Model menghasilkan prediksi yang kemudian dikonversi kembali ke label deskriptif (seperti "Healthy Sleep", "Insomnia", "Sleep Apnea").
 4. **Feedback** : Pengguna dapat memberikan umpan balik mengenai prediksi yang diberikan oleh aplikasi, yang kemudian disimpan untuk analisis lebih lanjut.
 
+## Endpoint API
+- /predict [POST] :
+  - **Input** : JSON dengan parameter kesehatan dan kebiasaan pengguna.
+  - **Output** : JSON dengan prediksi jenis gangguan tidur dan indikasi tekanan darah rendah jika ada.
+  - **Contoh Input** :
+    ```json
+    {
+        "gender": "Male",
+        "age": 30,
+        "sleep_duration": 7,
+        "quality_of_sleep": 3,
+        "physical_activity_level": 2,
+        "stress_level": 2,
+        "bmi_category": "Normal",
+        "heart_rate": 70,
+        "daily_steps": 10000,
+        "systolic": 120,
+        "diastolic": 80
+    }
+    ```
 
 ## **Nama Anggota**
 - Andi Alisha Faiqihah - H071221010
