@@ -12,14 +12,6 @@
 ## **Link Dataset**
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
 
-## Cara Menjalankan FE
-1. git clone `https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git`
-2. cd `direktori tempat folder/GROUP_4_PROJECT_DMML24/FrontEnd`
-3. install module yang dibutuhkan :
-   ```bash npm install```
-5. run :
-   ```bash npm run dev```
-
 ## Cara Menjalankan BE
 1. cd `direktori tempat folder/GROUP_4_PROJECT_DMML24/BackEnd`
 2. install beberapa modul
@@ -31,6 +23,13 @@
    python app.py
    ```
    
+## Cara Menjalankan FE
+1. git clone `https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git`
+2. cd `direktori tempat folder/GROUP_4_PROJECT_DMML24/FrontEnd`
+3. install module yang dibutuhkan :
+   ```bash npm install```
+5. run :
+   ```bash npm run dev```
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
 
 ## Struktur Aplikasi
