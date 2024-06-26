@@ -4,6 +4,13 @@
 ## Deskripsi Aplikasi 
 Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengguna dalam mendiagnosis potensi gangguan tidur berdasarkan data kesehatan dan kebiasaan sehari-hari. Aplikasi ini menggunakan model machine learning yang telah dilatih untuk memprediksi gangguan tidur seperti insomnia, sleep apnea, atau kondisi tidur sehat. Frontend aplikasi ini dibangun menggunakan Next.js, sedangkan backend menggunakan Flask.
 
+
+## Struktur Aplikasi
+- Folder `FrontEnd`:
+  Berisi kode untuk tampilan Aplikasi Sleep Disorder Predictor.
+- File `BackEnd/app.py`:
+  Berisi skrip untuk mengolah data data yang dikirimkan oleh Frontend
+
 ## Teknologi yang Digunakan
 - **Frontend** :
   - **Next.js** : Framework React untuk membangun aplikasi web yang dirender di server
@@ -41,53 +48,68 @@ Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengg
         "diastolic": 80
     }
     ```
+  - **Contoh Output** :
+    ```json
+    {
+        "prediction" : "Healthy Sleep",
+        "low_blood_pressure" : "false"
+    }
+    ```
+- /feedback [POST] :
+  - **Input** : JSON dengan pesan umpan balik dari pengguna.
+  - **Output** : JSON konfirmasi penerimaan umpan balik.
+  - **Contoh Input** :
+    ```json
+    {
+        "feedback": "The prediction was accurate and helpful!"
+    }
+    ```
+  - **Contoh Output**
+    ```json
+    {
+        "message": "Feedback received"
+    }
+    ```
+## Penggunaan Model Machine Learning
+- **Model** : Model machine learning yang dilatih untuk memprediksi gangguan tidur berdasarkan data yang diberikan
+- **Label Encoding** : `Label Encoder` digunakan untuk mengubah label target menjadi format numerik saat pelatihan dan mengembalikannya ke format deskriptif saat prediksi
 
-## **Nama Anggota**
-- Andi Alisha Faiqihah - H071221010
-- Mahendra Kirana M.B. - H071221058
-- Nurul Alya - H071221009
-- Rezqia Nurqalbi - H071221025
-
-## **Nama aplikasi web**
-**Sleep Disorder Predictor**
-
+## Instalasi dan Penggunaan
+### Backend
+1. **Clone Repository** :
+   ```bash
+   https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
+   cd GROUP-4-PROJECT-DMML24/backend
+   ```
+2. **Install Dependencies** :
+   ```bash
+   pip install flask scikit-learn joblib pandas flask-cors
+   ```
+3. **Run the backend application** :
+   ```bash
+   python app.py
+   ```
+### Frontend
+1. **Go To Frontend Directory** :
+   ```bash
+   cd ../frontend
+   ```
+2. **Install Dependencies** :
+   ```bash
+   npm install
+   ```
+3. **Run the frontend application** :
+   ```bash
+   npm run dev
+   ```
+### API Request
+- Gunakan endpoint `/predict` untuk melakukan prediksi gangguan tidur
+- Gunakan endpoint `/feedback` untuk mengirim umpan balik
+   
 ## **Link Dataset**
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
-
-## Cara Menjalankan Aplikasi
-**1. git clone repository**
-```bash
-https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
-```
-**2. Menjalankan BE**
-   - cd `direktori git clone/GROUP_4_PROJECT_DMML24/BackEnd`
-   - install beberapa modul
-      ```bash
-      pip install pandas joblib scikit-learn
-      ```
-   - run server
-      ```bash
-      python app.py
-      ```
-   
-**3. Menjalankan FE**
-   - cd `direktori git clone/GROUP_4_PROJECT_DMML24/FrontEnd`
-   - install module yang dibutuhkan :
-      ```bash
-      npm install
-      ```
-   - run :
-      ```bash
-      npm run dev
-      ```
-     
+  
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
-
-## Struktur Aplikasi
-- Folder `FrontEnd`:
-  Berisi kode untuk tampilan Aplikasi Sleep Disorder Predictor dengan menggunakan `Next JS`.
-- File `BackEnd/app.py`:
-  Berisi skrip untuk mengambil data data yang dikirimkan oleh Frontend menggunakan `Flask`.
 
 ## **Report 1**
 ### **1. Kanban Board**
