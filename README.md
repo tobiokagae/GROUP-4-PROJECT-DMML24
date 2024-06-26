@@ -33,8 +33,8 @@ note : install semua package terlebih dahulu sebelum melakukan data preprocessin
  ![Report 2](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/382a06bd-d2ba-4abe-b222-404b62c512c4)
 
 ### **2. Catatan**
- - Pelajari baik-baik modelnya, kemudian uji model-model yang memungkinkan untuk digunakan
- - Pelajari baik-baik tentang apa itu accuracy, precission, recall, dan F1-score
+ - Uji model-model yang memungkinkan untuk digunakan
+ - Perbaiki direktori project
 
 ## **Report 3**
 ### **1. Kanban Board**
