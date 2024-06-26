@@ -16,10 +16,10 @@ Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengg
    - **Flask-CORS** : Mengizinkan Cross-Origin Resource Sharing (CORS)
 
 ### Alur Kerja Aplikasi
-#### 1. Pengumpulan Data : Pengguna mengisi formulir di frontend Next.js dengan data pribadi dan kesehatan mereka seperti usia, durasi tidur, kualitas tidur, tingkat aktivitas fisik, tingkat stres, kategori BMI, detak jantung, jumlah langkah harian, dan tekanan darah (sistolik dan diastolik).
-#### 2. Preprocessing Data : Data yang dikumpulkan dari pengguna dikonversi ke dalam bentuk numerik yang sesuai dengan format yang digunakan saat pelatihan model. Misalnya, gender dikonversi menjadi nilai 0 atau 1, dan kategori BMI juga dikonversi menjadi nilai numerik.
-#### 3. Prediksi : Data yang telah diproses kemudian diberikan ke model machine learning di backend Flask untuk memprediksi jenis gangguan tidur yang mungkin dialami oleh pengguna. Model menghasilkan prediksi yang kemudian dikonversi kembali ke label deskriptif (seperti "Healthy Sleep", "Insomnia", "Sleep Apnea").
-#### 4. Feedback : Pengguna dapat memberikan umpan balik mengenai prediksi yang diberikan oleh aplikasi, yang kemudian disimpan untuk analisis lebih lanjut.
+1. **Pengumpulan Data** : Pengguna mengisi formulir di frontend Next.js dengan data pribadi dan kesehatan mereka seperti usia, durasi tidur, kualitas tidur, tingkat aktivitas fisik, tingkat stres, kategori BMI, detak jantung, jumlah langkah harian, dan tekanan darah (sistolik dan diastolik).
+2. **Preprocessing Data** : Data yang dikumpulkan dari pengguna dikonversi ke dalam bentuk numerik yang sesuai dengan format yang digunakan saat pelatihan model. Misalnya, gender dikonversi menjadi nilai 0 atau 1, dan kategori BMI juga dikonversi menjadi nilai numerik.
+3. **Prediksi** : Data yang telah diproses kemudian diberikan ke model machine learning di backend Flask untuk memprediksi jenis gangguan tidur yang mungkin dialami oleh pengguna. Model menghasilkan prediksi yang kemudian dikonversi kembali ke label deskriptif (seperti "Healthy Sleep", "Insomnia", "Sleep Apnea").
+4. **Feedback** : Pengguna dapat memberikan umpan balik mengenai prediksi yang diberikan oleh aplikasi, yang kemudian disimpan untuk analisis lebih lanjut.
 
 
 ## **Nama Anggota**
