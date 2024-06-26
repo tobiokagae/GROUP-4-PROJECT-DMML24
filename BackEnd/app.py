@@ -15,14 +15,6 @@ feature_names = model_info['feature_names']
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
-    
-    # Ensure all required keys are present in the input data
-    required_keys = ['gender', 'age', 'sleep_duration', 'quality_of_sleep', 'physical_activity_level',
-                     'stress_level', 'bmi_category', 'heart_rate', 'daily_steps', 'systolic', 'diastolic']
-    
-    for key in required_keys:
-        if key not in data:
-            return jsonify({'error': f'Missing required key: {key}'}), 400
 
     # Convert gender to numeric
     gender_mapping = {'Male': 1, 'Female': 0}
