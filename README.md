@@ -13,7 +13,8 @@
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
 
 ## Cara Menjalankan Aplikasi
-   - git clone `https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git`
+   - git clone repository
+     ```bash https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git```
 1. Menjalankan BE
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/BackEnd`
    - install beberapa modul
