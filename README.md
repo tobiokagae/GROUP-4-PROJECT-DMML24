@@ -21,9 +21,9 @@
 ## Cara Menjalankan BE
 1. cd Backend
 2. install beberapa modul
-   run -> pip install pandas joblib scikit-learn
+   run -> **pip install pandas joblib scikit-learn**
 3. run server
-   run -> python app.py
+   run -> **python app.py**
 
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
 
