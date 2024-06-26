@@ -13,11 +13,11 @@
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
 
 ## Cara Menjalankan Aplikasi
-   - git clone repository
+1. git clone repository
      ```bash
      https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
      ```
-1. Menjalankan BE
+2. Menjalankan BE
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/BackEnd`
    - install beberapa modul
       ```bash
@@ -28,7 +28,7 @@
       python app.py
       ```
    
-2. Menjalankan FE
+3. Menjalankan FE
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/FrontEnd`
    - install module yang dibutuhkan :
       ```bash
