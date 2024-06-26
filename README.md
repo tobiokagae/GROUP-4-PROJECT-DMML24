@@ -109,8 +109,6 @@ Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengg
 ## **Link Dataset**
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
   
-note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
-
 ## **Report 1**
 ### **1. Kanban Board**
  ![Report 1](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/3e1aafbf-5a57-402b-82c4-4ca94fa4887e)
