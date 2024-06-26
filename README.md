@@ -3,7 +3,7 @@
 
 ## **What Is Sleep Disorder Predictor?**
 ### 1. Aplikasi Sleep Disorder Predictor 
-adalah sebuah aplikasi web yang dikembangkan untuk membantu pengguna dalam mendiagnosis potensi gangguan tidur berdasarkan beberapa parameter kesehatan dan kebiasaan sehari-hari. Aplikasi ini menggunakan model machine learning yang telah dilatih untuk memprediksi gangguan tidur seperti Insomnia, Sleep Apnea, atau Heathy Sleep berdasarkan data input yang diberikan pengguna
+   Sebuah aplikasi web yang dikembangkan untuk membantu pengguna dalam mendiagnosis potensi gangguan tidur berdasarkan beberapa parameter kesehatan dan kebiasaan sehari-hari. Aplikasi ini menggunakan model machine learning yang telah dilatih untuk memprediksi gangguan tidur seperti Insomnia, Sleep Apnea, atau Heathy Sleep berdasarkan data input yang diberikan pengguna
 ### 
 
 ## **Nama Anggota**
