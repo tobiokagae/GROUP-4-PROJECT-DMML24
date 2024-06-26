@@ -14,9 +14,9 @@
 
 ## Cara Menjalankan Aplikasi
 **1. git clone repository**
-     ```bash
-     https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
-     ```
+```bash
+https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
+```
 **2. Menjalankan BE**
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/BackEnd`
    - install beberapa modul
