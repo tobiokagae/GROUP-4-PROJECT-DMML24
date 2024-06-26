@@ -27,6 +27,12 @@
 
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
 
+## Struktur Aplikasi
+- Folder `FrontEnd`:
+  Berisi kode untuk tampilan Aplikasi Sleep Disorder Predictor dengan menggunakan `Next JS`.
+- File `BackEnd/app.py`:
+  Berisi skrip untuk mengambil data data yang dikirimkan oleh Frontend menggunakan `Flask`.
+
 ## **Report 1**
 ### **1. Kanban Board**
  ![Report 1](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/128783688/3e1aafbf-5a57-402b-82c4-4ca94fa4887e)
