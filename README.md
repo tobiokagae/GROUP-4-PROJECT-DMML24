@@ -7,7 +7,7 @@
 - Rezqia Nurqalbi - H071221025
 
 ## **Nama aplikasi web**
-**Sleep Disorder Prediction**
+**Sleep Disorder Predictor**
 
 ## **Link Dataset**
 🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
