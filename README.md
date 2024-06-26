@@ -34,7 +34,7 @@
       ```bash
       npm install
       ```
-   -run :
+   - run :
       ```bash
       npm run dev
       ```
