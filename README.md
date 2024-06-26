@@ -1,4 +1,4 @@
-# **TUGAS-PROJECT-DMML24**
+# **Sleep Disorder Predictor**
 
 ## **Nama Anggota**
 - Andi Alisha Faiqihah - H071221010
