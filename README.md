@@ -14,7 +14,9 @@
 
 ## Cara Menjalankan Aplikasi
    - git clone repository
-     ```bash https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git```
+     ```bash
+     https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24.git
+     ```
 1. Menjalankan BE
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/BackEnd`
    - install beberapa modul
@@ -29,9 +31,13 @@
 2. Menjalankan FE
    - cd `direktori git clone/GROUP_4_PROJECT_DMML24/FrontEnd`
    - install module yang dibutuhkan :
-      ```bash npm install```
+      ```bash
+      npm install
+      ```
    -run :
-      ```bash npm run dev```
+      ```bash
+      npm run dev
+      ```
      
 note : install semua package terlebih dahulu sebelum melakukan data preprocessing & data processing
 
