@@ -1,6 +1,11 @@
 # **Sleep Disorder Predictor**
 ![](https://github.com/tobiokagae/GROUP-4-PROJECT-DMML24/assets/113653966/08a72c31-60b1-4efe-b9eb-3987385a2db7)
 
+## **What Is Sleep Disorder Predictor?**
+### 1. Aplikasi Sleep Disorder Predictor 
+adalah sebuah aplikasi web yang dikembangkan untuk membantu pengguna dalam mendiagnosis potensi gangguan tidur berdasarkan beberapa parameter kesehatan dan kebiasaan sehari-hari. Aplikasi ini menggunakan model machine learning yang telah dilatih untuk memprediksi gangguan tidur seperti Insomnia, Sleep Apnea, atau Heathy Sleep berdasarkan data input yang diberikan pengguna
+### 
+
 ## **Nama Anggota**
 - Andi Alisha Faiqihah - H071221010
 - Mahendra Kirana M.B. - H071221058
