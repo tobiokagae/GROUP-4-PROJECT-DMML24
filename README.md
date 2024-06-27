@@ -3,7 +3,9 @@
 
 ## Deskripsi Aplikasi 
 Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengguna dalam mendiagnosis potensi gangguan tidur berdasarkan data kesehatan dan kebiasaan sehari-hari. Aplikasi ini menggunakan model machine learning yang telah dilatih untuk memprediksi gangguan tidur seperti insomnia, sleep apnea, atau kondisi tidur sehat. Frontend aplikasi ini dibangun menggunakan Next.js, sedangkan backend menggunakan Flask.
-
+  
+## **Link Dataset**
+🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
 
 ## Struktur Aplikasi
 - Folder `FrontEnd`:
@@ -105,6 +107,4 @@ Sleep Disorder Predictor adalah aplikasi web yang dirancang untuk membantu pengg
 ### API Request
 - Gunakan endpoint `/predict` untuk melakukan prediksi gangguan tidur
 - Gunakan endpoint `/feedback` untuk mengirim umpan balik
-   
-## **Link Dataset**
-🔗[Sleep Health and Lifestyle Dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)
+
